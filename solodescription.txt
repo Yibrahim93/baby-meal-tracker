@@ -1,0 +1,4 @@
+description-my daughter is having a hard time with her appetite so i thought id keep track of her meals
+stack- python
+feature list- sql bcrypt bootstrap/css
+GitHub repo link- https://github.com/Yibrahim93/soloproject.git

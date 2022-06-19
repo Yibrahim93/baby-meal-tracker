@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Add a New Meal</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+<div class="container mt-4">
+    <nav class="d-flex justify-content-between px-4 mt-4">
+        <div><h1 class="text-primary">Hi {{session ['relation']}} !!!</h1></div>
+        <div><a class="btn btn-primary" href="/dashboard">VIEW ALL MEALS</a>
+        <a class="btn btn-primary" href="/logout">LOG OUT</a>
+</div>
+    </nav>
+{% for meal in meals %}
+        {% if session ['user_id'] == meal.user.id%}
+        <a href="/meal/{{ meal.id }}">My Meals</a>
+        {% else %}
+        {% endif %}
+{% endfor %}
+{% with messages = get_flashed_messages(category_filter=["meal"]) %}
+        {% if messages %}
+        <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
+
+<div class="col-8 mt-4"><h4 class="text-center text-primary">ADD A MEAL :)</h4>
+<form action="/meal/create" method="POST">
+    <input type="hidden" name="user_id" value="{{session['user_id']}}">
+    <div class="mb-3">
+        <label for="Meal" class="form-label">Meal:</label>
+        <input type="text" class="form-control" id="Meal" name="meal">
+    </div> 
+    <div class="mb-3">
+        <label for="Date" class="form-label">Date:</label>
+        <input type="date" class="form-control" id="Date" name="date">
+    </div>
+    <div class="mb-3">
+        <label for="Time" class="form-label">Time:</label>
+        <input type="time" class="form-control" id="Time" name="time">
+    </div>
+    <div class="mb-3">
+        <label for="Liked" class="form-label">Liked?:</label>
+        <input type="text" class="form-control" id="liked" name="liked">
+    </div>
+    <div class="mb-3">
+        <label for="Description" class="form-label">Description:</label>
+        <textarea cols="5" rows="8" class="form-control" id="description" name="description"></textarea>
+    </div>
+    <input class="btn btn-success" type="submit" value="ADD A MEAL">
+</form>
+</div>
+</body>
+</html>
