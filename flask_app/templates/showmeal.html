@@ -21,16 +21,16 @@
         <div class="row mb-10 text-center"><h4 class="text-primary">{{meal.meal}}</h4></div>
         <div class= "d-flex gx-5 col border p-5 m-4 bg-light p-3">
 <div class="col mt-10 text">  
-    <p> On {{meal.date}}  at {{meal.time}} baby had {{meal.meal}} as a meal</p>
-    <p> Baby gave this meal a rating of 
+    <p> On {{meal.date}}  at {{meal.time}} baby had {{meal.meal}} as a meal.</p>
+    <p> Baby
         {% if meal.liked == 0 %}
-        hated it
+        hated the {{meal.meal}}.
         {% else %}
-        loved it
+        loved the {{meal.meal}}.
         {% endif %}
         </p>
-    <p> "{{meal.description}}" </p>
-    <p> -{{meal.user.first_name}} {{meal.user.last_name}} aka {{meal.user.relation}}</p>
+    <p> "{{meal.description}}" 
+        -{{meal.user.first_name}} {{meal.user.last_name}} aka {{meal.user.relation}}</p>
 </div>
 <div class="col text-white">
 <img width="400px" height="500px" src="https://images.unsplash.com/photo-1624896273913-26bdde98b870?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1286&q=80" alt="baby eating">
